@@ -7,12 +7,15 @@ function App() {
   return (
     <>
       <Main>
+        <center>TIC TAC TOE</center>
+        Nama : M. RIZKY MAULANA
+        <b></b>
+        NIM : 1119101746
         <TicTacToe />
       </Main>
       <Footer>
         <FooterInner>
-          View the code on{" "}
-          <a href="https://github.com/Clarity-89/React_tic_tac_toe">Github</a>
+  
         </FooterInner>
       </Footer>
     </>

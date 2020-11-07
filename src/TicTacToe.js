@@ -25,7 +25,7 @@ const TicTacToe = ({ squares = arr }) => {
   const [winner, setWinner] = useState(null);
   const [nextMove, setNextMove] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
-  const [mode, setMode] = useState(GAME_MODES.medium);
+  const [mode, setMode] = useState(GAME_MODES.sedang);
 
   /**
    * On every move, check if there is a winner. If yes, set game state to over and open result modal
@@ -36,14 +36,14 @@ const TicTacToe = ({ squares = arr }) => {
       let winnerStr;
       switch (winner) {
         case PLAYER_X:
-          winnerStr = "Player X wins!";
+          winnerStr = "Pemain Hai telah memenangkan Permainan!";
           break;
         case PLAYER_O:
-          winnerStr = "Player O wins!";
+          winnerStr = "Pemain Hello telah memenangkan Permainan!";
           break;
         case DRAW:
         default:
-          winnerStr = "It's a draw";
+          winnerStr = "Hasil Seri!";
       }
       setGameState(GAME_STATES.over);
       setWinner(winnerStr);
@@ -86,13 +86,13 @@ const TicTacToe = ({ squares = arr }) => {
     const emptyIndices = board.getEmptySquares(grid);
     let index;
     switch (mode) {
-      case GAME_MODES.easy:
+      case GAME_MODES.mudah:
         do {
           index = getRandomInt(0, 8);
         } while (!emptyIndices.includes(index));
         break;
-      case GAME_MODES.medium:
-        // Medium level is basically ~half of the moves are minimax and the other ~half random
+      case GAME_MODES.sedang:
+        // sedang level is basically ~half of the moves are minimax and the other ~half random
         const smartMove = !board.isEmpty(grid) && Math.random() < 0.5;
         if (smartMove) {
           index = minimax(board, players.computer)[1];
@@ -102,7 +102,7 @@ const TicTacToe = ({ squares = arr }) => {
           } while (!emptyIndices.includes(index));
         }
         break;
-      case GAME_MODES.difficult:
+      case GAME_MODES.sulit:
       default:
         index = board.isEmpty(grid)
           ? getRandomInt(0, 8)
@@ -158,7 +158,7 @@ const TicTacToe = ({ squares = arr }) => {
   return gameState === GAME_STATES.notStarted ? (
     <Screen>
       <Inner>
-        <ChooseText>Select difficulty</ChooseText>
+        <ChooseText>PILIH MODE PERMAINAN</ChooseText>
         <select onChange={changeMode} value={mode}>
           {Object.keys(GAME_MODES).map(key => {
             const gameMode = GAME_MODES[key];
@@ -171,11 +171,11 @@ const TicTacToe = ({ squares = arr }) => {
         </select>
       </Inner>
       <Inner>
-        <ChooseText>Choose your player</ChooseText>
+        <ChooseText>Pilih Pemain</ChooseText>
         <ButtonRow>
-          <button onClick={() => choosePlayer(PLAYER_X)}>X</button>
-          <p>or</p>
-          <button onClick={() => choosePlayer(PLAYER_O)}>O</button>
+          <button  onClick={() => choosePlayer(PLAYER_X)}>Hai</button>
+          <p>atau</p>
+          <button  onClick={() => choosePlayer(PLAYER_O)}>Hallo</button>
         </ButtonRow>
       </Inner>
     </Screen>
@@ -190,7 +190,7 @@ const TicTacToe = ({ squares = arr }) => {
             key={index}
             onClick={() => humanMove(index)}
           >
-            {isActive && <Marker>{value === PLAYER_X ? "X" : "O"}</Marker>}
+            {isActive && <Marker>{value === PLAYER_X ? "Hai" : "Hallo"}</Marker>}
           </Square>
         );
       })}
