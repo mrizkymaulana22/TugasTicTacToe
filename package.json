@@ -2,7 +2,7 @@
   "name": "react_tic_tac_toe",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://mrizkymaulana22.github.io/my-tic-tac-toe/",
+  "homepage": "https://mrizkymaulana22.github.io/TugasTicTacToe/",
   "dependencies": {
     "gh-pages": "^2.2.0",
     "papercss": "^1.8.1",
