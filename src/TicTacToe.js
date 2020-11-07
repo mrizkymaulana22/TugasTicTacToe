@@ -36,10 +36,10 @@ const TicTacToe = ({ squares = arr }) => {
       let winnerStr;
       switch (winner) {
         case PLAYER_X:
-          winnerStr = "Pemain Hai telah memenangkan Permainan!";
+          winnerStr = "Pemain * telah memenangkan Permainan!";
           break;
         case PLAYER_O:
-          winnerStr = "Pemain Hello telah memenangkan Permainan!";
+          winnerStr = "Pemain # telah memenangkan Permainan!";
           break;
         case DRAW:
         default:
@@ -173,9 +173,9 @@ const TicTacToe = ({ squares = arr }) => {
       <Inner>
         <ChooseText>Pilih Pemain</ChooseText>
         <ButtonRow>
-          <button  onClick={() => choosePlayer(PLAYER_X)}>Hai</button>
+          <button  onClick={() => choosePlayer(PLAYER_X)}>*</button>
           <p>atau</p>
-          <button  onClick={() => choosePlayer(PLAYER_O)}>Hallo</button>
+          <button  onClick={() => choosePlayer(PLAYER_O)}>#</button>
         </ButtonRow>
       </Inner>
     </Screen>
@@ -190,7 +190,7 @@ const TicTacToe = ({ squares = arr }) => {
             key={index}
             onClick={() => humanMove(index)}
           >
-            {isActive && <Marker>{value === PLAYER_X ? "Hai" : "Hallo"}</Marker>}
+            {isActive && <Marker>{value === PLAYER_X ? "*" : "#"}</Marker>}
           </Square>
         );
       })}
